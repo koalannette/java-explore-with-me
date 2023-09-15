@@ -28,6 +28,6 @@ public class Stats {
     @Column(name = "ip", nullable = false, length = 15)
     String ip;
 
-    @Column(name = "created", nullable = false)
+    @Column(name = "timestamp", nullable = false)
     LocalDateTime timestamp;
 }
