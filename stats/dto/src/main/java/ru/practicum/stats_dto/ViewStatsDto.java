@@ -1,7 +1,9 @@
 package ru.practicum.stats_dto;
 
 import lombok.*;
+import lombok.experimental.FieldDefaults;
 
+@FieldDefaults(level = AccessLevel.PRIVATE)
 @Getter
 @Setter
 @EqualsAndHashCode

@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "stats", schema = "public")
+@Table(name = "stats")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Getter
 @Setter
@@ -29,5 +29,5 @@ public class Stats {
     String ip;
 
     @Column(name = "created", nullable = false)
-    LocalDateTime created;
+    LocalDateTime timestamp;
 }

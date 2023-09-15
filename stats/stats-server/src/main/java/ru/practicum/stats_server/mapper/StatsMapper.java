@@ -9,7 +9,7 @@ public class StatsMapper {
                 .app(endpointHitDto.getApp())
                 .uri(endpointHitDto.getUri())
                 .ip(endpointHitDto.getIp())
-                .created(endpointHitDto.getTimestamp())
+                .timestamp(endpointHitDto.getTimestamp())
                 .build();
     }
 
@@ -18,7 +18,7 @@ public class StatsMapper {
                 .app(stats.getApp())
                 .uri(stats.getUri())
                 .ip(stats.getIp())
-                .timestamp(stats.getCreated())
+                .timestamp(stats.getTimestamp())
                 .build();
     }
 }
