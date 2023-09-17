@@ -25,15 +25,15 @@ public class StatsClient extends BaseClient {
         );
     }
 
-    public ResponseEntity<Object> addHit(String app, String uri, String ip, LocalDateTime timestamp) {
+    public ResponseEntity<Object> addHit(@Value("${app}") String app, String uri, String ip) {
         log.info("Отправка запроса к appName = {}, uri = {}, ip = {}, timestamp = {}",
-                app, uri, ip, timestamp);
+                app, uri, ip, LocalDateTime.now());
 
         EndpointHitDto endpointHitDto = EndpointHitDto.builder()
                 .app(app)
                 .uri(uri)
                 .ip(ip)
-                .timestamp(timestamp)
+                .timestamp(LocalDateTime.now())
                 .build();
         return post("/hit", endpointHitDto);
     }
