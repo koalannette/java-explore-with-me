@@ -25,17 +25,6 @@ public interface EventRepository extends JpaRepository<Event, Long> {
 
     Set<Event> findAllByIdIn(Set<Long> events);
 
-    @Query("SELECT e FROM Event AS e " +
-            "WHERE (e.category.id IN :categories) AND " +
-            "(LOWER(e.annotation) LIKE CONCAT('%',LOWER(:text),'%') OR " +
-            "LOWER(e.description) LIKE CONCAT('%',LOWER(:text),'%'))")
-    List<Event> findByCategoryIdsAndText(String text, List<Long> categories);
-
-    @Query("SELECT e FROM Event AS e " +
-            "WHERE (LOWER(e.annotation) LIKE CONCAT('%',LOWER(:text),'%') OR " +
-            "LOWER(e.description) LIKE CONCAT('%',LOWER(:text),'%'))")
-    List<Event> findByText(String text);
-
     @Query("SELECT e " +
             "FROM Event AS e " +
             "JOIN FETCH e.initiator " +

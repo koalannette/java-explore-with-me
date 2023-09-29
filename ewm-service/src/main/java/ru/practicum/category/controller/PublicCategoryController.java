@@ -22,11 +22,13 @@ public class PublicCategoryController {
     @GetMapping
     public List<CategoryDto> getCategories(@RequestParam(defaultValue = "0") Integer from,
                                            @RequestParam(defaultValue = "10") Integer size) {
+        log.info("Получен запрос GET на получение категорий");
         return categoryService.getCategories(PageRequest.of(from, size));
     }
 
     @GetMapping("/{catId}")
     public CategoryDto getCategory(@PathVariable Long catId) {
+        log.info("Получен запрос GET на получение информации о категории по её идентификатору");
         return categoryService.getCategory(catId);
     }
 }

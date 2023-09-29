@@ -6,14 +6,9 @@ import ru.practicum.request.dto.ParticipationRequestDto;
 import ru.practicum.request.model.Request;
 
 import java.util.Collection;
-import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface RequestMapper {
-
-    //ParticipationRequestDto toRequestDto(Request request);
-
-    //List<ParticipationRequestDto> toRequestDto(List<Request> request);
 
     @Mapping(target = "id", source = "id")
     @Mapping(target = "event", source = "request.event.id")
@@ -25,9 +20,6 @@ public interface RequestMapper {
 
     Collection<ParticipationRequestDto> toParticipationRequestDtoCollection(
             Collection<Request> requests);
-
-    List<ParticipationRequestDto> toParticipationRequestDtoList(
-            List<Request> requests);
 
 }
 

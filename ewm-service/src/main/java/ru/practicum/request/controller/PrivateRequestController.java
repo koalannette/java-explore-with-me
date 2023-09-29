@@ -26,20 +26,20 @@ public class PrivateRequestController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public ParticipationRequestDto addRequest(@PathVariable(name = "userId") Long userId, @RequestParam(name = "eventId") Long eventId) {
-
+        log.info("Получен запрос POST добавление запроса на участии в событии");
         return requestMapper.toParticipationRequestDto(requestService.createRequest(userId, eventId));
     }
 
     @PatchMapping("{requestId}/cancel")
     public ParticipationRequestDto cancelRequest(@PathVariable @Min(0) Long userId,
                                                  @PathVariable @Min(0) Long requestId) {
-
+        log.info("Получен запрос PATCH на отмену своего запроса на участие в событии");
         return requestMapper.toParticipationRequestDto(requestService.cancelRequest(userId, requestId));
     }
 
     @GetMapping
     public Collection<ParticipationRequestDto> getUserRequests(@PathVariable @Min(0) Long userId) {
-
+        log.info("Получен запрос GET на получение информации о заявках текущего пользователя на участие в  чужих событиях");
         return requestMapper.toParticipationRequestDtoCollection(requestService.getUserRequests(userId));
     }
 

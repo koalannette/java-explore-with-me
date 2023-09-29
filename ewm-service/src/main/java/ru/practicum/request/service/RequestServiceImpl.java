@@ -36,15 +36,15 @@ public class RequestServiceImpl implements RequestService {
                 () -> new AccessDeniedException("Недопустимый запрос"));
 
         if (requestRepository.existsByRequesterIdAndEventId(userId, eventId)) {
-            throw new AccessDeniedException("You can't create same request twice");
+            throw new AccessDeniedException("Вы не можете создать один и тот же запрос дважды");
         }
 
         if (userId.equals(event.getInitiator().getId())) {
-            throw new AccessDeniedException("Initiator of the event can't participate in own event");
+            throw new AccessDeniedException("Инициатор мероприятия не может участвовать в собственном мероприятии");
         }
 
         if (!event.getState().equals(EventState.PUBLISHED)) {
-            throw new AccessDeniedException("It isn't possible participate if event isn't published ");
+            throw new AccessDeniedException("Участие невозможно, если событие не опубликовано");
         }
         if (event.getParticipantLimit() > 0) {
             Long participants = requestRepository.countByEventIdAndStatus(event.getId(), RequestStatus.CONFIRMED);
@@ -87,12 +87,6 @@ public class RequestServiceImpl implements RequestService {
         userService.checkUserExistAndGet(userId);
         return requestRepository.findAllByRequesterId(userId);
     }
-
-
-    private Long getRequestsByEventAndByStatus(Long eventId, RequestStatus status) {
-        return requestRepository.findRequestCountByEventIdAndStatus(eventId, status).orElse(0L);
-    }
-
 
     private Request checkRequestExistAndGet(Long requestId) {
         return requestRepository.findById(requestId).orElseThrow(

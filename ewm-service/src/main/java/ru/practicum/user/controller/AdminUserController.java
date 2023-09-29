@@ -26,18 +26,21 @@ public class AdminUserController {
     public List<UserDto> getUsers(@RequestParam(defaultValue = "") List<Long> ids,
                                   @PositiveOrZero @RequestParam(defaultValue = "0") Integer from,
                                   @Positive @RequestParam(defaultValue = "10") Integer size) {
+        log.info("Получен запрос GET на получение информации о пользователях");
         return userService.getUsers(ids, from, size);
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public UserDto addUser(@RequestBody @Valid UserDto userDto) {
+        log.info("Получен запрос POST на добавление нового пользователя");
         return userService.addUser(userDto);
     }
 
     @DeleteMapping("/{userId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteUser(@PathVariable Long userId) {
+        log.info("Получен запрос DELETE удаление пользователя");
         userService.deleteUser(userId);
     }
 

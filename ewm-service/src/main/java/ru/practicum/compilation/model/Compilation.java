@@ -19,10 +19,6 @@ public class Compilation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    //    @JoinTable(name = "event_compilations",
-//            joinColumns = @JoinColumn(name = "compilation_id"),
-//            inverseJoinColumns = @JoinColumn(name = "event_id")
-//    )
     private Boolean pinned;
     private String title;
 

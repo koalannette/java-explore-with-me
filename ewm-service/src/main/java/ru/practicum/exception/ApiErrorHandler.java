@@ -56,18 +56,6 @@ public class ApiErrorHandler {
     }
 
     @ExceptionHandler
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ApiError handleNotCorrectEventStateException(NotCorrectEventStateException e) {
-        return ApiError.builder()
-                .status(HttpStatus.BAD_REQUEST)
-                .reason("Некорректное состояние события.")
-                .message(e.getMessage())
-                .errorTimestamp(LocalDateTime.now())
-                .build();
-    }
-
-
-    @ExceptionHandler
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public ApiError handleNotFoundException(NotFoundException e) {
         return ApiError.builder()

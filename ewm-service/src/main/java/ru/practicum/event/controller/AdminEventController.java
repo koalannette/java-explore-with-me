@@ -39,14 +39,14 @@ public class AdminEventController {
                                               @PositiveOrZero Integer from,
                                               @RequestParam(defaultValue = "10")
                                               @Positive Integer size) {
-        log.info("Get events of users {} with states {}, categories {}", users, states, categories);
+        log.info("Получен запрос GET на поиск событий");
         return eventService.getAllEventsAdmin(users, states, categories, rangeStart, rangeEnd, from, size);
     }
 
     @PatchMapping("/{eventId}")
     public EventFullDto updateEventAdmin(@PathVariable(value = "eventId") Long eventId,
                                          @Valid @RequestBody EventUpdateDto eventDto) {
-        log.info("Update event {} with id= {}", eventDto, eventId);
+        log.info("Получен запрос PATCH на редактирование данных события и его статуса");
         return eventService.updateEventByIdAdmin(eventId, eventDto);
     }
 

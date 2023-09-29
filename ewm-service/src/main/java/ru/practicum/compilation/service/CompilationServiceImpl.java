@@ -70,7 +70,7 @@ public class CompilationServiceImpl implements CompilationService {
 
     @Override
     public List<CompilationDto> getCompilations(Boolean pinned, Integer from, Integer size) {
-        log.info("Get all compilations");
+        log.info("Получены все подборки");
         if (pinned == null) {
             return compilationRepository.findAll(new Pagination(from, size, Sort.unsorted())).getContent().stream()
                     .map(compilationMapper::mapToCompilationDto)

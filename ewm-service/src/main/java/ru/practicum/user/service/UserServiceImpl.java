@@ -26,7 +26,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<UserDto> getUsers(List<Long> ids, Integer from, Integer size) {
-        log.info("Get user with ids: {}", ids);
+        log.info("Получены пользователи с ids: {}", ids);
         if (ids.isEmpty()) {
             return userRepository.findAll(new Pagination(from, size, Sort.unsorted())).stream()
                     .map(userMapper::toUserDto)

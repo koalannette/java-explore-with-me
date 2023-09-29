@@ -34,7 +34,7 @@ public class PublicEventController {
     @GetMapping("/{id}")
     public EventFullDto getFullInfoAboutEventById(
             @PathVariable @Min(0) Long id, HttpServletRequest request) {
-        log.info("GET event by id={}", id);
+        log.info("Получен запрос на получение подобной информации об опубликованном событии");
         statsClient.addHit(request.getRequestURI(), request.getRemoteAddr());
         return eventService.getEventByPublic(id);
     }
@@ -52,7 +52,7 @@ public class PublicEventController {
                                                  @PositiveOrZero @RequestParam(defaultValue = "0") Integer from,
                                                  @Positive @RequestParam(defaultValue = "10") Integer size,
                                                  HttpServletRequest request) {
-        log.info("Получен запрос на получение событий с возможностью фильтрации.");
+        log.info("Получен запрос GET на получение событий с возможностью фильтрации.");
         List<EventShortDto> dtos = eventService.getFilteredEvents(text, categories, paid,
                 rangeStart,
                 rangeEnd,
