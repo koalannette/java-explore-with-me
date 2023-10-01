@@ -209,8 +209,8 @@ public class EventServiceImpl implements EventService {
         userService.checkUserExistAndGet(userId);
         Event event = getEventById(eventId);
         List<Long> requestsId = dto.getRequestIds();
-        for (Long requestId : requestsId) {
-            Request request = requestRepository.findById(requestId).orElseThrow(RuntimeException::new);
+        List<Request> requests = requestRepository.findAllById(requestsId);
+        for (Request request : requests) {
             if (request.getStatus() != RequestStatus.PENDING) {
                 throw new AccessDeniedException("Статус заявки остается неизменным");
             }
