@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.util.DefaultUriBuilderFactory;
@@ -16,21 +17,25 @@ import java.util.Map;
 
 @Service
 @Slf4j
+@PropertySource(value = {"classpath:statsServiceClient.properties"})
 public class StatsClient extends BaseClient {
+
+    private static final String APPLICATION_NAME = "ewm-service";
+
     @Autowired
-    public StatsClient(@Value("${server.url}") String serverUrl, RestTemplateBuilder builder) {
+    public StatsClient(@Value("${stats.server.url}") String serverUrl, RestTemplateBuilder builder) {
         super(builder
                 .uriTemplateHandler(new DefaultUriBuilderFactory(serverUrl))
                 .build()
         );
     }
 
-    public ResponseEntity<Object> addHit(@Value("${app}") String app, String uri, String ip) {
+    public ResponseEntity<Object> addHit(String uri, String ip) {
         log.info("Отправка запроса к appName = {}, uri = {}, ip = {}, timestamp = {}",
-                app, uri, ip, LocalDateTime.now());
+                APPLICATION_NAME, uri, ip, LocalDateTime.now());
 
         EndpointHitDto endpointHitDto = EndpointHitDto.builder()
-                .app(app)
+                .app(APPLICATION_NAME)
                 .uri(uri)
                 .ip(ip)
                 .timestamp(LocalDateTime.now())

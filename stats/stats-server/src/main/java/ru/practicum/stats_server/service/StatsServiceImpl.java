@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import ru.practicum.stats_dto.EndpointHitDto;
 import ru.practicum.stats_dto.ViewStatsDto;
+import ru.practicum.stats_server.exception.BadRequestException;
 import ru.practicum.stats_server.model.Stats;
 import ru.practicum.stats_server.repository.StatsRepository;
 
@@ -29,6 +30,7 @@ public class StatsServiceImpl implements StatsService {
 
     @Override
     public List<ViewStatsDto> getStats(LocalDateTime start, LocalDateTime end, String[] uris, Boolean unique) {
+        validateDateOrder(start, end);
         if (unique) {
             if (uris == null) {
                 return statsRepository.getStatsByUniqueWithoutUri(start, end);
@@ -39,6 +41,12 @@ public class StatsServiceImpl implements StatsService {
                 return statsRepository.getStatsByUriWithoutUnique(start, end);
             }
             return statsRepository.getAllStats(start, end, uris);
+        }
+    }
+
+    private void validateDateOrder(LocalDateTime start, LocalDateTime end) {
+        if (end.isBefore(start)) {
+            throw new BadRequestException("Дата окончания не может быть перед датой начала.");
         }
     }
 }
