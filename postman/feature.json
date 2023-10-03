@@ -829,11 +829,11 @@
 									"\r",
 									"const target = pm.response.json();\r",
 									"\r",
-									"pm.test(\"Комментарий должен содержать поля: id, text, eventId, commentator, published_on\", function () {\r",
+									"pm.test(\"Комментарий должен содержать поля: id, text, eventId, commentator, publishedOn\", function () {\r",
 									"pm.expect(target.length).eql(1);\r",
 									"pm.expect(target[0]).to.have.property('id');\r",
 									"pm.expect(target[0]).to.have.property('text');\r",
-									"pm.expect(target[0]).to.have.property('published_on');\r",
+									"pm.expect(target[0]).to.have.property('publishedOn');\r",
 									"pm.expect(target[0]).to.have.property('commentator');\r",
 									"pm.expect(target[0]).to.have.property('eventId');\r",
 									"});"
