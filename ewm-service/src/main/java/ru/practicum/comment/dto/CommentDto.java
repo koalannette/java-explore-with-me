@@ -3,7 +3,6 @@ package ru.practicum.comment.dto;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-import ru.practicum.user.dto.UserDto;
 
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;

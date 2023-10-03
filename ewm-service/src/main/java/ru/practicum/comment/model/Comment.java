@@ -27,6 +27,6 @@ public class Comment {
     @ManyToOne(optional = false)
     @JoinColumn(name = "commentator_id", nullable = false)
     private User commentator;
-    @Column(nullable = false)
-    private LocalDateTime published_on;
+    @Column(name = "published_on", nullable = false)
+    private LocalDateTime publishedOn;
 }
