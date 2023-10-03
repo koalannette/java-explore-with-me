@@ -20,5 +20,5 @@ public class CommentDto {
     private Long eventId;
     private String commentator;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime published_on;
+    private LocalDateTime publishedOn;
 }
