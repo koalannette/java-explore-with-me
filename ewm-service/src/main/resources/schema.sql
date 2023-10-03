@@ -5,6 +5,7 @@ DROP TABLE IF EXISTS events CASCADE;
 DROP TABLE IF EXISTS requests CASCADE;
 DROP TABLE IF EXISTS compilations CASCADE;
 DROP TABLE IF EXISTS compilation_event CASCADE;
+DROP TABLE IF EXISTS comments CASCADE;
 
 
 CREATE TABLE IF NOT EXISTS users
@@ -74,4 +75,15 @@ CREATE TABLE IF NOT EXISTS event_compilations
 (
     compilation_id BIGINT NOT NULL REFERENCES compilations (id) ON DELETE CASCADE,
     event_id       BIGINT NOT NULL REFERENCES events (id) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS comments
+(
+    id     BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    text   VARCHAR(1000)               NOT NULL,
+    event_id       BIGINT,
+    commentator_id BIGINT,
+    published_on TIMESTAMP WITHOUT TIME ZONE NOT NULL,
+    FOREIGN KEY (event_id) REFERENCES events (id),
+    FOREIGN KEY (commentator_id) REFERENCES users (id)
 );
