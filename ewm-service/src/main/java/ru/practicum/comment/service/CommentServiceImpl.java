@@ -41,7 +41,7 @@ public class CommentServiceImpl implements CommentService {
         comment.setText(newCommentDto.getText());
         comment.setEvent(event);
         comment.setCommentator(user);
-        comment.setPublished_on(LocalDateTime.now());
+        comment.setPublishedOn(LocalDateTime.now());
         return commentMapper.toCommentDto(commentRepository.save(comment));
     }
 
