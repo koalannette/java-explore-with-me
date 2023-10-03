@@ -36,7 +36,7 @@
 									"\r",
 									"pm.test(\"Данные в ответе должны соответствовать данным в запросе\", function () {\r",
 									"    pm.expect(target.id).to.not.be.null;\r",
-									"    pm.expect(target.published_on).to.not.be.null;\r",
+									"    pm.expect(target.publishedOn).to.not.be.null;\r",
 									"    pm.expect(target.commentator).to.not.be.null;\r",
 									"    pm.expect(target.eventId).to.not.be.null;\r",
 									"    pm.expect(source.text).equal(target.text, 'Текст комментария должен соответствовать указанному при создании');\r",
@@ -112,7 +112,7 @@
 									"\r",
 									"pm.test(\"Данные в ответе должны соответствовать данным в запросе\", function () {\r",
 									"    pm.expect(target.id).to.not.be.null;\r",
-									"    pm.expect(target.published_on).to.not.be.null;\r",
+									"    pm.expect(target.publishedOn).to.not.be.null;\r",
 									"    pm.expect(target.commentator).to.not.be.null;\r",
 									"    pm.expect(target.eventId).to.not.be.null;\r",
 									"    pm.expect(source.text).equal(target.text, 'Текст комментария должен соответствовать указанному при создании');\r",
@@ -187,7 +187,7 @@
 									"\r",
 									"pm.test(\"Данные в ответе должны соответствовать данным в запросе\", function () {\r",
 									"    pm.expect(target.id).to.not.be.null;\r",
-									"    pm.expect(target.published_on).to.not.be.null;\r",
+									"    pm.expect(target.publishedOn).to.not.be.null;\r",
 									"    pm.expect(target.commentator).to.not.be.null;\r",
 									"    pm.expect(target.eventId).to.not.be.null;\r",
 									"    pm.expect(source.text).equal(target.text, 'Текст комментария должен соответствовать указанному при создании');\r",
@@ -598,7 +598,7 @@
 									"\r",
 									"pm.test(\"Данные в ответе должны соответствовать данным в запросе\", function () {\r",
 									"    pm.expect(target.id).to.not.be.null;\r",
-									"    pm.expect(target.published_on).to.not.be.null;\r",
+									"    pm.expect(target.publishedOn).to.not.be.null;\r",
 									"    pm.expect(target.commentator).to.not.be.null;\r",
 									"    pm.expect(target.eventId).to.not.be.null;\r",
 									"    pm.expect(source.text).equal(target.text, 'Текст комментария должен соответствовать указанному при создании');\r",
@@ -669,7 +669,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"text\": \"� ���������, ������� �� �����������\"\r\n}",
+							"raw": "{\r\n    \"text\": \"Это новый комментарий к событию\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -723,7 +723,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"text\": \"� ���������, ������� �� �����������\"\r\n}",
+							"raw": "{\r\n    \"text\": \"Это новый комментарий к событию\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
